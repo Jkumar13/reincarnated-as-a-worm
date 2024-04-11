@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour {
 	public GameObject enemy;
 	public float spawnRate = 5;
 	private float timer = 0;
-	public float heightOffset 10;
+	public float heightOffset = 10;
 
 	void Start () {
         spawnEnemy();
@@ -29,6 +29,6 @@ public class EnemySpawner : MonoBehaviour {
 		float highestPoint = transform.position.y + heightOffset;
 
 		Instantiate(enemy, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0),
-		transoform.rotation);
+		transform.rotation);
 	}
 }
