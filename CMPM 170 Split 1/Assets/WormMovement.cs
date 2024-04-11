@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
+public class WormMovement : MonoBehaviour
 {
     // Global Variables
     public int playerSpeed;
-    public Vector2 targetPosition;
-    private Vector3 mouse_pos;
-    
+    public int wormOffset;
+    public GameObject target;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        mouse_pos = Input.mousePosition;
-
-        targetPosition = Camera.main.ScreenToWorldPoint(mouse_pos);
+        Vector2 targetPosition = new Vector2(target.transform.position.x, target.transform.position.y);
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, Time.deltaTime * playerSpeed);
+        transform.rotation = target.transform.rotation;
+
+        // transform.rotation = Quaternion.Euler(0, 0, targetPosition * playerSpeed/5);
     }
 
  
