@@ -9,7 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public int playerSpeed;
     public Vector2 targetPosition;
     private Vector3 mouse_pos;
-    
+    public Vector2 startingPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Enemy")) {
-            // idk
+            SceneManager.LoadScene("Gameplay");
         }
     }
 }
