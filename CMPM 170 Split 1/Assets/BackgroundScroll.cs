@@ -14,6 +14,7 @@ public class BackgroundScroll : MonoBehaviour {
         offset += (Time.deltaTime * scrollSpeed) / 10f;
 
         //EDIT so only scrolls as player is moving
-        mat.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+        
+        mat.SetTextureOffset("_MainTex", new Vector2(0, offset));
     }
 }
