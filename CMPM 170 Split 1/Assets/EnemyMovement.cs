@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour{
     public float moveSpeed = 5;
-    public float moveDistance = 50;
-    public Vector2 currentPoint;
-    public int direction = 1;
+    public int directionX = 1;
+    public int directionY = 0;
+    public SpriteRenderer mySpriteRenderer;
 
     void Start(){
 
     }
 
     void Update(){
-		transform.position = Vector2.MoveTowards(transform.position, currentPoint * direction, Time.deltaTime * moveSpeed);
-        if (transform.position.x >= currentPoint.x) {
-            direction = -1;
-        }
-        if (transform.position.x <= -currentPoint.x) {
-            direction = 1;
+		transform.Translate(directionX*moveSpeed*Time.deltaTime, directionY*moveSpeed*Time.deltaTime, 0);
+    }
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Boundary")) {
+            directionX *= -1;
+            directionY *= -1;
+            if (mySpriteRenderer.flipY == true) {
+                mySpriteRenderer.flipY = false;
+            }
+            else if (mySpriteRenderer.flipY == false) {
+                mySpriteRenderer.flipY = true;
+            }
         }
     }
 }
