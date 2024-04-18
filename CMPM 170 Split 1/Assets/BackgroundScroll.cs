@@ -16,5 +16,16 @@ public class BackgroundScroll : MonoBehaviour {
         //EDIT so only scrolls as player is moving
         
         mat.SetTextureOffset("_MainTex", new Vector2(0, offset));
+
+        mouse_pos = Input.mousePosition;
+
+        targetPosition = Camera.main.ScreenToWorldPoint(mouse_pos);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, Time.deltaTime * playerSpeed);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Enemy")) {
+            SceneManager.LoadScene("Gameplay");
+        }
     }
 }
