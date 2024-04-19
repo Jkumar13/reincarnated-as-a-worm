@@ -1,10 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BackgroundScroll : MonoBehaviour {
     [Range(-1f, 1f)]
     public float scrollSpeed = 0.5f;
     private float offset;
     private Material mat;
+    public int playerSpeed;
+
 
     void Start(){
         mat = GetComponent<Renderer>().material;
@@ -17,10 +22,7 @@ public class BackgroundScroll : MonoBehaviour {
         
         mat.SetTextureOffset("_MainTex", new Vector2(0, offset));
 
-        mouse_pos = Input.mousePosition;
-
-        targetPosition = Camera.main.ScreenToWorldPoint(mouse_pos);
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, Time.deltaTime * playerSpeed);
+        transform.position = Vector2.MoveTowards(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Time.deltaTime * playerSpeed);
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
