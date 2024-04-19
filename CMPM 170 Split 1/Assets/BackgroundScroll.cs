@@ -12,7 +12,6 @@ public class BackgroundScroll : MonoBehaviour {
 
 
     //variables from playerMovement.cs
-    public int playerSpeed;
     public Vector2 targetPosition;
     private Vector3 mouse_pos;
     public Vector2 startingPoint;

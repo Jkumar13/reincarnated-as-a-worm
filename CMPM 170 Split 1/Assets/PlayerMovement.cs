@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        // Trish was here!
         // Ansh was here
         // Jay2 is here.
     }
@@ -34,6 +34,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Enemy")) {
             SceneManager.LoadScene("Gameplay");
+        }
+
+        else if (other.gameObject.CompareTag("Finish")) {
+            SceneManager.LoadScene("EndScene");
         }
     }
 }
